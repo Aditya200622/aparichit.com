@@ -1,0 +1,177 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("image.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  color: red;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ⚡ Lightning Flash Effect */
+.lightning {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, 0);
+  pointer-events: none;
+  animation: flash 6s infinite;
+  z-index: 1;
+}
+
+@keyframes flash {
+  0%, 70%, 100% { background: rgba(255,255,255,0); }
+  75% { background: rgba(255,255,255,0.3); }
+  77% { background: rgba(255,255,255,0.6); }
+  79% { background: rgba(255,255,255,0.1); }
+  82% { background: rgba(255,255,255,0.4); }
+  85% { background: rgba(255,255,255,0); }
+}
+
+/* 🧠 Glitch Overlay (like crash effect) */
+.glitch-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 0, 0, 0.05) 0px,
+    rgba(255, 0, 0, 0.05) 2px,
+    transparent 3px,
+    transparent 5px
+  );
+  mix-blend-mode: overlay;
+  animation: glitchOverlay 3s infinite;
+  z-index: 2;
+}
+
+@keyframes glitchOverlay {
+  0%, 100% { opacity: 0.05; transform: translate(0, 0); }
+  20% { opacity: 0.1; transform: translate(2px, -2px); }
+  40% { opacity: 0.05; transform: translate(-1px, 1px); }
+  60% { opacity: 0.08; transform: translate(3px, -1px); }
+  80% { opacity: 0.06; transform: translate(-2px, 2px); }
+}
+
+/* 🔥 Main Container */
+.container {
+  z-index: 3;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 25px red;
+  animation: fadeIn 2.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* 💀 Glitch Text */
+.glitch-text {
+  position: relative;
+  color: red;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 0 0 25px red, 0 0 50px #660000;
+  margin-bottom: 1.5rem;
+  animation: textGlitch 2.5s infinite;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  color: red;
+  clip: rect(0, 900px, 0, 0);
+}
+
+.glitch-text::before {
+  left: 2px;
+  text-shadow: -2px 0 cyan;
+  animation: glitchTop 2s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+  left: -2px;
+  text-shadow: -2px 0 lime;
+  animation: glitchBottom 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitchTop {
+  0% { clip: rect(10px, 9999px, 40px, 0); }
+  20% { clip: rect(20px, 9999px, 60px, 0); }
+  40% { clip: rect(50px, 9999px, 80px, 0); }
+  60% { clip: rect(30px, 9999px, 70px, 0); }
+  80% { clip: rect(40px, 9999px, 100px, 0); }
+  100% { clip: rect(10px, 9999px, 90px, 0); }
+}
+
+@keyframes glitchBottom {
+  0% { clip: rect(60px, 9999px, 90px, 0); }
+  20% { clip: rect(30px, 9999px, 70px, 0); }
+  40% { clip: rect(10px, 9999px, 40px, 0); }
+  60% { clip: rect(50px, 9999px, 80px, 0); }
+  80% { clip: rect(40px, 9999px, 100px, 0); }
+  100% { clip: rect(20px, 9999px, 60px, 0); }
+}
+
+/* 🔴 Button */
+button {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.7rem 2rem;
+  cursor: pointer;
+  background-color: red;
+  color: black;
+  border: 2px solid black;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 20px #ff0000;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: black;
+  color: red;
+  box-shadow: 0 0 30px red;
+}
+
+/* 📱 Mobile Friendly */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.3rem;
+  }
+  button {
+    font-size: 1rem;
+    padding: 0.5rem 1.2rem;
+  }
+  .container {
+    width: 90%;
+    padding: 1.2rem;
+  }
+}
+
+

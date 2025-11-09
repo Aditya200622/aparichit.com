@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aparichit</title>
+  <link rel="icon" href="image.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Lightning + Glitch Overlay -->
+  <div class="lightning"></div>
+  <div class="glitch-overlay"></div>
+
+  <!-- Invisible Background Audio -->
+  <audio id="bg-audio" src="Audio/aparichit_bgm_extract_extra_high.mp3" autoplay loop preload="auto"></audio>
+
+  <!-- Main Container -->
+  <div class="container glitch">
+    <h1 class="glitch-text" data-text="WELCOME TO LUCIFER WORLD (यमदूत)">
+      WELCOME TO LUCIFER WORLD <span>(यमदूत)</span>
+    </h1>
+    <a href="Home Page.html">
+      <button id="enter-btn">ENTER</button>
+    </a>
+  </div>
+
+  <script>
+    // ---- Background Audio Handler ----
+    const audio = document.getElementById("bg-audio");
+    audio.volume = 0.6; // volume control
+
+    // Some browsers block autoplay, so start audio when user clicks anywhere
+    document.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play().catch(() => {});
+      }
+    }, { once: true });
+
+    // Also start on first key press (for keyboard users)
+    document.addEventListener("keydown", () => {
+      if (audio.paused) {
+        audio.play().catch(() => {});
+      }
+    }, { once: true });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
